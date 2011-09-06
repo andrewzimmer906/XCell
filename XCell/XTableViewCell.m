@@ -3,7 +3,7 @@
 //  XCell
 //
 //  Created by Andrew Zimmer on 9/5/11.
-//  Copyright (c) 2011 Modea. All rights reserved.
+//  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
 
 #import "XTableViewCell.h"
@@ -13,7 +13,7 @@
 -(void)setupView;
 
 //Drawing Functions
--(void)drawTitle:(NSString*)title withWrapping:(BOOL)wrapping;
+-(CGSize)drawTitle:(NSString*)title withWrapping:(BOOL)wrapping;
 -(void)drawTitle:(NSString *)title withContent:(NSString*)content withWrapping:(BOOL)wrapping;
 -(void)drawTitle:(NSString *)title withSubcontent:(NSString*)content;
 
@@ -55,6 +55,41 @@
     }
     
     self.backgroundColor = _model.backgroundColor;
+    
+    if(_textField) {
+        [_textField removeFromSuperview];
+        [_textField release];
+        _textField = nil;
+    }
+    
+    if(_model.type == XCELL_EDITABLE_TEXT || _model.type == XCELL_EDITABLE_TEXT_WITH_TITLE) {
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(_model.padding.left, 
+                                                                   _model.padding.top, 
+                                                                   self.frame.size.width - _model.padding.right - _model.padding.left, 
+                                                                   _model.minimumHeight - _model.padding.top - _model.padding.bottom)];
+        _textField.borderStyle = _model.textFieldBorderStyle;
+        _textField.clearButtonMode = _model.textFieldClearButtonMode;
+        _textField.keyboardType = _model.keyboardType;
+        _textField.returnKeyType = _model.returnKeyType;
+        _textField.autocapitalizationType = _model.autocapitilizationType;
+        _textField.autocorrectionType = _model.autocorrectionType;
+        _textField.placeholder = _model.content;
+        _textField.delegate = self;
+        
+        [self addSubview:_textField];
+    }
+}
+
+-(void)beginEditing {
+    if(_textField) {
+        [_textField becomeFirstResponder];
+    }
+}
+
+-(void)endEditing {
+    if(_textField) {
+        [_textField resignFirstResponder];
+    }
 }
 
 #pragma mark - Static Methods
@@ -79,6 +114,9 @@
             return [self heightForTitle:model.title withContent:model.content withModel:model withWrapping:YES withTableWidth:tableWidth];
             break;
             
+        case XCELL_EDITABLE_TEXT:
+        case XCELL_EDITABLE_TEXT_WITH_TITLE:
+            break;
     }
     
     return model.minimumHeight;
@@ -88,6 +126,7 @@
     return @"XTableViewCellIdentifier";
 }
 
+#pragma mark - Drawing
 -(void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     if (_model == nil) {
@@ -118,7 +157,91 @@
         case XCELL_TITLE_CONTENT_WITH_WRAPPING:
             [self drawTitle:_model.title withContent:_model.content withWrapping:YES];
             break;
+            
+        
+        case XCELL_EDITABLE_TEXT_WITH_TITLE:
+        {
+            CGSize titleSize = [self drawTitle:_model.title withWrapping:NO];
+            if(_textField) {
+                _textField.frame = CGRectMake(titleSize.width + _model.padding.left + 5, 
+                                              _textField.frame.origin.y, 
+                                              self.frame.size.width - _model.padding.left - _model.padding.right - titleSize.width - 5,
+                                              _textField.frame.size.height);
+            }
+        }
+            break;
+            
+        case XCELL_EDITABLE_TEXT:
+            break;
     }
+}
+
+#pragma mark - UITextFieldDelegate Methods
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textFieldDidBeginEditing:forCellModel:)]) {
+            [_model.delegate textFieldDidBeginEditing:textField forCellModel:_model];
+        }
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textFieldDidEndEditing:forCellModel:)]) {
+            [_model.delegate textFieldDidEndEditing:textField forCellModel:_model];
+        }
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:forCellModel:::)]) {
+            return [_model.delegate textField:textField shouldChangeCharactersInRange:range replacementString:string forCellModel:_model];
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textFieldShouldBeginEditing:forCellModel:)]) {
+            return [_model.delegate textFieldShouldBeginEditing:textField forCellModel:_model];
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textFieldShouldEndEditing:forCellModel:)]) {
+            return [_model.delegate textFieldShouldEndEditing:textField forCellModel:_model];
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textFieldShouldClear:forCellModel:)]) {
+            return [_model.delegate textFieldShouldClear:textField forCellModel:_model];
+        }
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(_model.delegate != nil) {
+        if([_model.delegate respondsToSelector:@selector(textFieldShouldReturn:forCellModel:)]) {
+            return [_model.delegate textFieldShouldReturn:textField forCellModel:_model];
+        }
+    }
+    
+    return YES;
 }
 
 @end
@@ -128,12 +251,12 @@
 
 /* Do anything needed for initial cell setup here */
 -(void)setupView {
-    
+    _textField = nil;
 }
 
 #pragma mark Drawing
 /* Draw a title for a cell */
--(void)drawTitle:(NSString*)title withWrapping:(BOOL)wrapping {
+-(CGSize)drawTitle:(NSString*)title withWrapping:(BOOL)wrapping {
     NSInteger textWidth = self.frame.size.width - _model.padding.left - _model.padding.right;
     
     [_model.titleColor set];
@@ -159,6 +282,8 @@
             withFont:_model.titleFont 
             lineBreakMode:UILineBreakModeTailTruncation 
             alignment:_model.titleAlignment];
+    
+    return titleSize;
 }
 
 /* Draw a title and the content right next to it */

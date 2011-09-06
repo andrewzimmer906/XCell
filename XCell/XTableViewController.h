@@ -18,6 +18,10 @@
     UITableView *_tableView;
     
     BOOL _sortSectionsAlphabetically;
+    
+    XTableViewCellModel *_curEditingModel;
+    BOOL _keyboardIsShowing;
+    CGFloat _keyboardHeight;
 }
 
 @property(nonatomic, assign) id<XTableViewControllerDelegate> delegate;
@@ -32,4 +36,11 @@
 
 //Get data back
 -(XTableViewCellModel*)modelForIndexPath:(NSIndexPath*)indexPath;
+-(NSIndexPath*)indexPathForModel:(XTableViewCellModel*)model;
+
+//Make cell visible for editing (Keyboard is all up in my stuff)
+-(void)beginEditingWithModel:(XTableViewCellModel*)model;
+-(void)endEditingWithModel:(XTableViewCellModel*)model;
+-(BOOL)beginEditingNextCell:(XTableViewCellModel*)model;
+
 @end

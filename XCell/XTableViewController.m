@@ -16,6 +16,9 @@
 -(void)logError:(NSString*)error;
 -(NSArray*)arrayForSection:(NSInteger)section;
 -(void)destroyData;
+-(void)keyboardWillShow:(NSNotification *)notification;
+-(void)hideKeyboard;
+-(NSInteger)tagForIndexPath:(NSIndexPath*)path;
 @end
 
 @implementation XTableViewController
@@ -32,6 +35,13 @@
         tableView.delegate = self;
         tableView.dataSource = self;
         _sortSectionsAlphabetically = NO;
+        _curEditingModel = nil;
+        
+        // Register notification when the keyboard will be shown (to get its size)
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(keyboardWillShow:)
+                                              name:UIKeyboardWillShowNotification
+                                              object:nil];
     }
     return self;
 }
@@ -61,8 +71,84 @@
 
 #pragma mark - Data Retrieval Methods
 -(XTableViewCellModel*)modelForIndexPath:(NSIndexPath*)indexPath {
+    if(indexPath.section >= [[_data allKeys] count]) {
+        [self logError:@"Section outside of bounds in modelForIndexPath:"];
+    }
     NSArray *sectionArray = [self arrayForSection:indexPath.section];
+    
+    if(indexPath.row >= [sectionArray count]) {
+        [self logError:@"Row outside of bounds in modelForIndexPath:"];
+    }
+    
     return [sectionArray objectAtIndex:indexPath.row];
+}
+
+-(NSIndexPath*)indexPathForModel:(XTableViewCellModel*)model {
+    for(NSInteger i = 0; i < [[_data allKeys] count]; i++) {
+        NSArray *sectionArray = [self arrayForSection:i];
+        NSInteger row = [sectionArray indexOfObject:model];
+        if(row > -1) {
+            return [NSIndexPath indexPathForRow:row inSection:i];
+        }
+    }
+    
+    [self logError:@"Model not Found in indexPathForModel:"];
+    return nil;
+}
+
+#pragma mark - Editing Methods
+-(void)beginEditingWithModel:(XTableViewCellModel*)model {
+    _curEditingModel = model;
+}
+
+-(void)endEditingWithModel:(XTableViewCellModel*)model {
+    _curEditingModel = nil;
+    [self hideKeyboard];
+}
+
+-(BOOL)beginEditingNextCell:(XTableViewCellModel*)model {
+    NSIndexPath *path = [self indexPathForModel:model];
+    
+    for(NSInteger i = path.section; i < [[_data allKeys] count]; i++) {
+        NSArray *sectionArray = [self arrayForSection:i];
+        if(i == path.section) {
+            for(NSInteger j = path.row; j < [sectionArray count]; j++) {
+                XTableViewCellModel *curModel = (XTableViewCellModel*)[sectionArray objectAtIndex:j];
+                if(curModel.tabEnabled && curModel != model) {
+                    _curEditingModel = curModel;
+                    XTableViewCell *oldCell = (XTableViewCell*)[_tableView viewWithTag:[self tagForIndexPath:path]];
+                    [oldCell endEditing];
+                    
+                    XTableViewCell *newCell = (XTableViewCell*)[_tableView viewWithTag:[self tagForIndexPath:[NSIndexPath indexPathForRow:j inSection:i]]];
+                    [newCell beginEditing];
+                    
+                    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+                    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                    
+                    return YES;
+                }
+            }
+        } else {
+            for(NSInteger j = path.row; j < [sectionArray count]; j++) {
+                XTableViewCellModel *curModel = (XTableViewCellModel*)[sectionArray objectAtIndex:j];
+                if(curModel.tabEnabled && curModel != model) {
+                    _curEditingModel = curModel;
+                    XTableViewCell *oldCell = (XTableViewCell*)[_tableView viewWithTag:[self tagForIndexPath:path]];
+                    [oldCell endEditing];
+                    
+                    XTableViewCell *newCell = (XTableViewCell*)[_tableView viewWithTag:[self tagForIndexPath:[NSIndexPath indexPathForRow:j inSection:i]]];
+                    [newCell beginEditing];
+                    
+                    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+                    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                    
+                    return YES;
+                }
+            }
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - TableView Data Source
@@ -93,6 +179,7 @@
     }
     
     cell.model = model;
+    cell.tag = [self tagForIndexPath:indexPath];
     return cell;
 }
 
@@ -118,7 +205,7 @@
    Logs an error to the console
 */
 -(void)logError:(NSString*)error {
-    NSLog(@"XTableViewConroller: %@", error);
+    NSLog(@"Error in XTableViewController: %@", error);
 }
 
 /*
@@ -159,6 +246,62 @@
         [_data release];
         _data = nil;
     }
+}
+
+/* Size the tableview accordingly */
+-(void)keyboardWillShow:(NSNotification *)notification {
+    if(_curEditingModel != nil && !_keyboardIsShowing) {
+        UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+        
+        CGRect _keyboardEndFrame;
+        [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&_keyboardEndFrame];
+        
+        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+            _keyboardHeight = _keyboardEndFrame.size.height;
+        }
+        else {
+            _keyboardHeight = _keyboardEndFrame.size.width;
+        }
+        
+        //calculate a new frame
+        CGRect frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height - _keyboardHeight);
+        
+        [UIView animateWithDuration:.3
+                         animations:^{ 
+                             _tableView.frame = frame;
+                         } 
+                         completion:^(BOOL finished){
+                         }];
+
+        NSIndexPath *path = [self indexPathForModel:_curEditingModel];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        [_tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        
+        _keyboardIsShowing = YES;
+    }
+}
+
+-(void)hideKeyboard {
+    if(_keyboardIsShowing) {        
+        //calculate a new frame
+        CGRect frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height + _keyboardHeight);
+        
+        [UIView animateWithDuration:.3
+                         animations:^{ 
+                             _tableView.frame = frame;
+                         } 
+                         completion:^(BOOL finished){
+                         }];
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        
+        _keyboardIsShowing = NO;
+    }
+}
+
+/* Create a tag based on the section and row of a cell */
+-(NSInteger)tagForIndexPath:(NSIndexPath*)path {
+    return path.section * 1000 + path.row + 1;
 }
 
 @end
