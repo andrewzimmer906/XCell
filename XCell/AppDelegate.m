@@ -3,32 +3,32 @@
 //  XCell
 //
 //  Created by Andrew Zimmer on 9/5/11.
-//  Copyright (c) 2011 Modea. All rights reserved.
+//  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
 
 #import "AppDelegate.h"
-
 #import "MainViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize mainViewController = _mainViewController;
+@synthesize navigationController = _navigationController;
 
 - (void)dealloc
 {
     [_window release];
-    [_mainViewController release];
+    [_navigationController release];
     [super dealloc];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.mainViewController = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.mainViewController;
+    UIViewController *rootView = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:rootView];
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

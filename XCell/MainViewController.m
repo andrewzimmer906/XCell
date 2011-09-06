@@ -3,74 +3,55 @@
 //  XCell
 //
 //  Created by Andrew Zimmer on 9/5/11.
-//  Copyright (c) 2011 Modea. All rights reserved.
+//  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
 
 #import "MainViewController.h"
+#import "XTableViewController.h"
+#import "XTableViewCellModel.h"
+
+@interface MainViewController(Private)
+-(NSArray*)tableData;
+@end
 
 @implementation MainViewController
+@synthesize tableView;
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+#pragma mark - Memory Mangement
+-(void)dealloc {
+    [_tableController release];
+    [super dealloc];
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.title = @"X-Cell";
+    _tableController = [[XTableViewController alloc] initWithTableView:tableView];
+    _tableController.delegate = self;
+    [_tableController setDataWithArray:[self tableData]];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+#pragma mark - XTableViewControllerDelegate Methods
+
+@end
+
+@implementation MainViewController(Private)
+-(NSArray*)tableData {
+    return [NSArray arrayWithObjects:
+            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"XCELL_STANDARD"],
+            [XTableViewCellModel modelWithType:XCELL_STANDARD_WITH_WRAPPING 
+                                     withTitle:@"XCELL_STANDARD_WITH_WRAPPING, another normal cell, but this time with wrapping capabilities."],
+            [XTableViewCellModel modelWithType:XCELL_SETTINGS withTitle:@"XCELL_SETTINGS" withContent:@"Apple's value1"],
+            [XTableViewCellModel modelWithType:XCELL_CONTACTS withTitle:@"XCELL_CONTACTS" withContent:@"Apple's value2"],
+            [XTableViewCellModel modelWithType:XCELL_SUBTITLE withTitle:@"XCELL_SUBTITLE" withContent:@"Apple's SUBTITLE except that my version supports wrapping inside the cell view."],
+            [XTableViewCellModel modelWithType:XCELL_TITLE_CONTENT withTitle:@"XCELL_TITLE_CONTENT:" withContent:@"Supports one line of content."],
+            [XTableViewCellModel modelWithType:XCELL_TITLE_CONTENT_WITH_WRAPPING withTitle:@"Short Title:" withContent:@"XCELL_TITLE_CONTENT_WITH_WRAPPING. Supports multiple lines of content with an autogrow/stretch to size the cell correctly to wrapping content."],
+            nil];
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-#pragma mark - Flipside View
-
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)showInfo:(id)sender
-{    
-    FlipsideViewController *controller = [[[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil] autorelease];
-    controller.delegate = self;
-    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentModalViewController:controller animated:YES];
-}
-
 @end

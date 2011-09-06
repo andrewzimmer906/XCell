@@ -14,9 +14,10 @@
 		891C19BB1415527E00B0DF61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C19BA1415527E00B0DF61 /* main.m */; };
 		891C19BF1415527E00B0DF61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C19BE1415527E00B0DF61 /* AppDelegate.m */; };
 		891C19C21415527E00B0DF61 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C19C11415527E00B0DF61 /* MainViewController.m */; };
-		891C19C51415527E00B0DF61 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C19C41415527E00B0DF61 /* FlipsideViewController.m */; };
 		891C19C81415527E00B0DF61 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 891C19C61415527E00B0DF61 /* MainViewController.xib */; };
-		891C19CB1415527E00B0DF61 /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 891C19C91415527E00B0DF61 /* FlipsideViewController.xib */; };
+		891C19DD141553A800B0DF61 /* XTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C19DC141553A800B0DF61 /* XTableViewController.m */; };
+		891C1A2414155FB200B0DF61 /* XTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C1A2314155FB200B0DF61 /* XTableViewCell.m */; };
+		891C1A2814155FD000B0DF61 /* XTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,18 +25,22 @@
 		891C19AE1415527E00B0DF61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		891C19B01415527E00B0DF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		891C19B21415527E00B0DF61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		891C19B61415527E00B0DF61 /* XCell-Info.plist */ = {isa = PBXFileReference; path = "XCell-Info.plist"; sourceTree = "<group>"; };
+		891C19B61415527E00B0DF61 /* XCell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "XCell-Info.plist"; path = "XCell/XCell-Info.plist"; sourceTree = "<group>"; };
 		891C19B81415527E00B0DF61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		891C19BA1415527E00B0DF61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		891C19BC1415527E00B0DF61 /* XCell-Prefix.pch */ = {isa = PBXFileReference; path = "XCell-Prefix.pch"; sourceTree = "<group>"; };
-		891C19BD1415527E00B0DF61 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		891C19BC1415527E00B0DF61 /* XCell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCell-Prefix.pch"; sourceTree = "<group>"; };
+		891C19BD1415527E00B0DF61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		891C19BE1415527E00B0DF61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		891C19C01415527E00B0DF61 /* MainViewController.h */ = {isa = PBXFileReference; path = MainViewController.h; sourceTree = "<group>"; };
+		891C19C01415527E00B0DF61 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		891C19C11415527E00B0DF61 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		891C19C31415527E00B0DF61 /* FlipsideViewController.h */ = {isa = PBXFileReference; path = FlipsideViewController.h; sourceTree = "<group>"; };
-		891C19C41415527E00B0DF61 /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
 		891C19C71415527E00B0DF61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
-		891C19CA1415527E00B0DF61 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
+		891C19DB141553A800B0DF61 /* XTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewController.h; sourceTree = "<group>"; };
+		891C19DC141553A800B0DF61 /* XTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewController.m; sourceTree = "<group>"; };
+		891C1A201415568000B0DF61 /* XTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewControllerDelegate.h; sourceTree = "<group>"; };
+		891C1A2214155FB200B0DF61 /* XTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCell.h; sourceTree = "<group>"; };
+		891C1A2314155FB200B0DF61 /* XTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewCell.m; sourceTree = "<group>"; };
+		891C1A2614155FD000B0DF61 /* XTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCellModel.h; sourceTree = "<group>"; };
+		891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewCellModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				891C19B41415527E00B0DF61 /* XCell */,
+				891C19D1141552BD00B0DF61 /* Resources */,
 				891C19AD1415527E00B0DF61 /* Frameworks */,
 				891C19AB1415527E00B0DF61 /* Products */,
 			);
@@ -82,14 +88,9 @@
 		891C19B41415527E00B0DF61 /* XCell */ = {
 			isa = PBXGroup;
 			children = (
-				891C19BD1415527E00B0DF61 /* AppDelegate.h */,
-				891C19BE1415527E00B0DF61 /* AppDelegate.m */,
-				891C19C01415527E00B0DF61 /* MainViewController.h */,
-				891C19C11415527E00B0DF61 /* MainViewController.m */,
-				891C19C31415527E00B0DF61 /* FlipsideViewController.h */,
-				891C19C41415527E00B0DF61 /* FlipsideViewController.m */,
-				891C19C61415527E00B0DF61 /* MainViewController.xib */,
-				891C19C91415527E00B0DF61 /* FlipsideViewController.xib */,
+				891C19D91415537E00B0DF61 /* XCell */,
+				891C19D61415530200B0DF61 /* ViewControllers */,
+				891C19D4141552D800B0DF61 /* AppDelegate */,
 				891C19B51415527E00B0DF61 /* Supporting Files */,
 			);
 			path = XCell;
@@ -98,12 +99,108 @@
 		891C19B51415527E00B0DF61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				891C19B61415527E00B0DF61 /* XCell-Info.plist */,
-				891C19B71415527E00B0DF61 /* InfoPlist.strings */,
 				891C19BA1415527E00B0DF61 /* main.m */,
 				891C19BC1415527E00B0DF61 /* XCell-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		891C19D1141552BD00B0DF61 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				891C19D5141552F500B0DF61 /* Data */,
+				891C19D3141552CC00B0DF61 /* Nibs */,
+				891C19D2141552C500B0DF61 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		891C19D2141552C500B0DF61 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		891C19D3141552CC00B0DF61 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				891C19C61415527E00B0DF61 /* MainViewController.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
+		891C19D4141552D800B0DF61 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				891C19BD1415527E00B0DF61 /* AppDelegate.h */,
+				891C19BE1415527E00B0DF61 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		891C19D5141552F500B0DF61 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				891C19B61415527E00B0DF61 /* XCell-Info.plist */,
+				891C19B71415527E00B0DF61 /* InfoPlist.strings */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		891C19D61415530200B0DF61 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				891C19D71415530900B0DF61 /* MainViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		891C19D71415530900B0DF61 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				891C19C01415527E00B0DF61 /* MainViewController.h */,
+				891C19C11415527E00B0DF61 /* MainViewController.m */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		891C19D91415537E00B0DF61 /* XCell */ = {
+			isa = PBXGroup;
+			children = (
+				891C1A2114155F9800B0DF61 /* XTableViewCell */,
+				891C19DA1415538600B0DF61 /* XTableViewController */,
+			);
+			name = XCell;
+			sourceTree = "<group>";
+		};
+		891C19DA1415538600B0DF61 /* XTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				891C1A201415568000B0DF61 /* XTableViewControllerDelegate.h */,
+				891C19DB141553A800B0DF61 /* XTableViewController.h */,
+				891C19DC141553A800B0DF61 /* XTableViewController.m */,
+			);
+			name = XTableViewController;
+			sourceTree = "<group>";
+		};
+		891C1A2114155F9800B0DF61 /* XTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				891C1A2514155FBC00B0DF61 /* XTableViewCellModel */,
+				891C1A2214155FB200B0DF61 /* XTableViewCell.h */,
+				891C1A2314155FB200B0DF61 /* XTableViewCell.m */,
+			);
+			name = XTableViewCell;
+			sourceTree = "<group>";
+		};
+		891C1A2514155FBC00B0DF61 /* XTableViewCellModel */ = {
+			isa = PBXGroup;
+			children = (
+				891C1A2614155FD000B0DF61 /* XTableViewCellModel.h */,
+				891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */,
+			);
+			name = XTableViewCellModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,7 +256,6 @@
 			files = (
 				891C19B91415527E00B0DF61 /* InfoPlist.strings in Resources */,
 				891C19C81415527E00B0DF61 /* MainViewController.xib in Resources */,
-				891C19CB1415527E00B0DF61 /* FlipsideViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +269,9 @@
 				891C19BB1415527E00B0DF61 /* main.m in Sources */,
 				891C19BF1415527E00B0DF61 /* AppDelegate.m in Sources */,
 				891C19C21415527E00B0DF61 /* MainViewController.m in Sources */,
-				891C19C51415527E00B0DF61 /* FlipsideViewController.m in Sources */,
+				891C19DD141553A800B0DF61 /* XTableViewController.m in Sources */,
+				891C1A2414155FB200B0DF61 /* XTableViewCell.m in Sources */,
+				891C1A2814155FD000B0DF61 /* XTableViewCellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +284,7 @@
 				891C19B81415527E00B0DF61 /* en */,
 			);
 			name = InfoPlist.strings;
+			path = XCell;
 			sourceTree = "<group>";
 		};
 		891C19C61415527E00B0DF61 /* MainViewController.xib */ = {
@@ -194,14 +293,7 @@
 				891C19C71415527E00B0DF61 /* en */,
 			);
 			name = MainViewController.xib;
-			sourceTree = "<group>";
-		};
-		891C19C91415527E00B0DF61 /* FlipsideViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				891C19CA1415527E00B0DF61 /* en */,
-			);
-			name = FlipsideViewController.xib;
+			path = XCell;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -256,7 +348,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCell/XCell-Prefix.pch";
 				INFOPLIST_FILE = "XCell/XCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -267,7 +362,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCell/XCell-Prefix.pch";
 				INFOPLIST_FILE = "XCell/XCell-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -291,6 +389,7 @@
 				891C19D01415527E00B0DF61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -3,13 +3,17 @@
 //  XCell
 //
 //  Created by Andrew Zimmer on 9/5/11.
-//  Copyright (c) 2011 Modea. All rights reserved.
+//  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
 
-#import "FlipsideViewController.h"
+#import "XTableViewControllerDelegate.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+@class XTableViewController;
 
-- (IBAction)showInfo:(id)sender;
+@interface MainViewController : UIViewController<XTableViewControllerDelegate> {
+    XTableViewController *_tableController;
+}
+
+@property(nonatomic, retain) IBOutlet UITableView *tableView;
 
 @end
