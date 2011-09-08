@@ -1,10 +1,21 @@
+///////////////////////////////////////////////////////////////////
 //
 //  XTableViewCellModel.h
 //  XCell
 //
+//  This is the model for all XTableViewCells.  This model contains 
+//  information about what data the cell should display, how the cell
+//  should look, and what happens when the cell is clicked on, or 
+//  a textfield on a cell is interacted with.
+//
+//  This class is completly overridable for making your own custom cell
+//  types.  Make sure to import XTableViewCellModelProtected into the *.m
+//  file of any overrides.
+//
 //  Created by Andrew Zimmer on 9/5/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
 #import "XTableViewControllerDelegate.h"
@@ -14,7 +25,8 @@
 
 }
 
-//init
+#pragma mark - Methods
+//Initialization
 -(id)initWithType:(XTableViewCellStyle)eType;
 
 // Convenience Initialization Methods
@@ -34,7 +46,6 @@
                                              withAccesoryType:(UITableViewCellAccessoryType)accessory 
                                              withTag:(NSInteger)tag 
                                              withEditingDelegate:(id<XTableViewControllerDelegate>)delegate;
-
 #pragma mark Properties
 @property XTableViewCellStyle type;
 
@@ -58,13 +69,6 @@
 @property(nonatomic, retain) UIColor *contentColor;
 @property UITextAlignment contentAlignment;
 
-@property(nonatomic) UITextBorderStyle textFieldBorderStyle;
-@property(nonatomic) UITextFieldViewMode textFieldClearButtonMode;
-@property(nonatomic) UIKeyboardType keyboardType;
-@property(nonatomic) UIReturnKeyType returnKeyType;
-@property(nonatomic) UITextAutocapitalizationType autocapitilizationType;
-@property(nonatomic) UITextAutocorrectionType autocorrectionType;
-
 @property(nonatomic) UIEdgeInsets padding;
 @property NSInteger minimumHeight;
 
@@ -72,5 +76,14 @@
 @property(nonatomic) UITableViewCellAccessoryType accessory;
 
 @property(nonatomic, retain) UIColor *backgroundColor;
+@property(nonatomic, retain) UIColor *borderColor; //Only for Grouped Table Views
+
+//Text Field Appearance Properties
+@property(nonatomic) UITextBorderStyle textFieldBorderStyle;
+@property(nonatomic) UITextFieldViewMode textFieldClearButtonMode;
+@property(nonatomic) UIKeyboardType keyboardType;
+@property(nonatomic) UIReturnKeyType returnKeyType;
+@property(nonatomic) UITextAutocapitalizationType autocapitilizationType;
+@property(nonatomic) UITextAutocorrectionType autocorrectionType;
 
 @end

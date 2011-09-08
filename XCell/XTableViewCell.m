@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  XTableViewCell.m
 //  XCell
@@ -5,6 +6,7 @@
 //  Created by Andrew Zimmer on 9/5/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "XTableViewCell.h"
 #import "XTableViewCellModel.h"
@@ -28,6 +30,7 @@
         [_textField release];
     }
     [_cellView release];
+    [_cellBackground release];
     [super dealloc];
 }
 
@@ -45,6 +48,7 @@
     return _model;
 }
 
+/* The model defines how the cell with appear and function */
 -(void)setModel:(XTableViewCellModel*)model {
     _model = model;
     [_cellView setModel:model];
@@ -56,7 +60,12 @@
     }
     self.accessoryType = _model.accessory;
     
-    self.contentView.backgroundColor = _model.backgroundColor;
+    if(self.backgroundView) {
+        _cellBackground.fillColor = _model.backgroundColor;
+        _cellBackground.borderColor = _model.borderColor;
+    } else {
+       self.contentView.backgroundColor = _model.backgroundColor;
+    }
     
     if(_textField) {
         [_textField removeFromSuperview];
@@ -84,18 +93,47 @@
         
         [self addSubview:_textField];
     }
+    
+    [self setNeedsDisplay];
 }
 
+/* 
+   This is used to determine if we need to draw a custom background for a GroupedTableView 
+   The drawing is handled by the XTableViewBackgroundView class.
+*/
+-(void)setCellPosition:(XCellPosition)value {
+    if(value != XCELL_NORMAL) {
+        if(!_cellBackground) {
+            CGRect backgroundFrame = CGRectMake(0.0, 0.0, self.bounds.size.width, self.bounds.size.height);
+            _cellBackground = [[XTableViewCellBackgroundView alloc] initWithFrame:backgroundFrame];
+            _cellBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            self.backgroundView = _cellBackground;
+        }
+        
+        if(_model) {
+            _cellBackground.fillColor = _model.backgroundColor;
+            _cellBackground.borderColor = _model.borderColor;
+            self.contentView.backgroundColor = [UIColor clearColor];
+        }
+        
+        _cellBackground.position = value;
+        [self.backgroundView setNeedsDisplay];
+    }
+}
+
+/* Forces the cellview to redraw */
 -(void)redisplay {
     [_cellView setNeedsDisplay];
 }
 
+/* Called from the XTableViewController when editing is started */
 -(void)beginEditing {
     if(_textField) {
         [_textField becomeFirstResponder];
     }
 }
 
+/* Called from the XTableViewController when editing is ended */
 -(void)endEditing {
     if(_textField) {
         [_textField resignFirstResponder];
@@ -104,6 +142,7 @@
 }
 
 #pragma mark - Static Methods
+/* Returns the height for this cell, based on the model, the table width, and a few other factors. */
 +(CGFloat)cellHeight:(XTableViewCellModel*)model withTableWidth:(NSInteger)tableWidth withTableStyle:(UITableViewStyle)style {
     if(style == UITableViewStyleGrouped) {
         tableWidth -= 20;
@@ -148,6 +187,7 @@
     return model.minimumHeight;
 }
 
+/* Returns the cell identifier for dequeueTableCellWithIdentifer function calls */
 +(NSString*)cellIdentifier {
     return @"XTableViewCellIdentifier";
 }
@@ -264,6 +304,7 @@
 #pragma mark - Private -
 @implementation XTableViewCell(Private)
 
+/* Intial cell setup */
 -(void)setupView {
     _textField = nil;
     
@@ -271,8 +312,6 @@
     _cellView = [[XTableViewCellView alloc] initWithFrame:viewFrame];
     _cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.contentView addSubview:_cellView];
-    
-    self.contentView.clipsToBounds = YES;
 }
 
 #pragma mark Height Calculations

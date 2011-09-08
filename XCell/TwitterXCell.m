@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  TwitterXCell.m
 //  XCell
@@ -5,6 +6,7 @@
 //  Created by Andrew Zimmer on 9/7/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "TwitterXCell.h"
 #import "TwitterXCellView.h"
@@ -15,6 +17,7 @@
 
 @implementation TwitterXCell
 
+/* Initialization */
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -36,6 +39,7 @@
     return self;
 }
 
+/* Return the current cell height for this cell */
 +(CGFloat)cellHeight:(XTableViewCellModel *)model withTableWidth:(NSInteger)tableWidth withTableStyle:(UITableViewStyle)style {
     if( [model isKindOfClass:[TwitterXCellModel class]] ) {
         TwitterXCellModel *curModel = (TwitterXCellModel*)model;

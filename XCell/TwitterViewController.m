@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  TwitterViewController.m
 //  XCell
@@ -5,6 +6,7 @@
 //  Created by Andrew Zimmer on 9/7/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "TwitterViewController.h"
 #import "TwitterXCellModel.h"
@@ -26,8 +28,7 @@
 }
 
 #pragma mark - View lifecycle
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Overriden Custom Cells";
@@ -45,6 +46,7 @@
 
 @implementation TwitterViewController(Private)
 
+/* Get data to populate the table */
 -(NSArray*)tableData {
     NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:100];
     for(int i = 0; i < 25; i++) {

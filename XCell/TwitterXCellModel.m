@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  TwitterXCellModel.m
 //  XCell
@@ -5,9 +6,12 @@
 //  Created by Andrew Zimmer on 9/7/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "TwitterXCellModel.h"
+#import "XTableViewCellModelProtected.h" //Get the protected functions from the standard model.
 
+/* Private Methods */
 @interface TwitterXCellModel(Private)
 -(NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 -(NSInteger)numDaysAgo:(NSDate*)date;
@@ -15,6 +19,7 @@
 -(NSInteger)numMinutesAgo:(NSDate*)date;
 @end
 
+/* Implementation */
 @implementation TwitterXCellModel
 @synthesize posted, userPicture;
 
@@ -43,6 +48,7 @@
     return model;
 }
 
+/* Gets a twitter style string from a date */
 -(NSString*)dateAsString {
     NSInteger numDaysAgo = [self numDaysAgo:self.posted];
     NSInteger numHoursAgo = [self numHoursAgo:self.posted];
@@ -82,6 +88,7 @@
 
 @end
 
+#pragma mark - Private -
 @implementation TwitterXCellModel(Private)
 - (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
 {

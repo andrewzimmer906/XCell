@@ -20,6 +20,7 @@
 
 @implementation XTableViewCellView
 
+#pragma mark - Initialization
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -28,6 +29,7 @@
     return self;
 }
 
+#pragma mark - Setters
 -(void)setModel:(XTableViewCellModel*)model {
     _model = model;
 }
@@ -76,6 +78,7 @@
 
 @end
 
+#pragma mark - Private -
 @implementation XTableViewCellView(Private)
 
 /* Do anything needed for initial cell setup here */

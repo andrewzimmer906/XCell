@@ -34,6 +34,7 @@
 		892AA9BB14183E4D0095DDCA /* Andrew_Zimmer.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9B914183E4D0095DDCA /* Andrew_Zimmer.png */; };
 		892AA9BC14183E4D0095DDCA /* jess-in-a-box.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9BA14183E4D0095DDCA /* jess-in-a-box.png */; };
 		892AA9D4141843B40095DDCA /* twitterCellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9D3141843B40095DDCA /* twitterCellBG.png */; };
+		898A046C14195319004C9910 /* XTableViewCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A046B14195319004C9910 /* XTableViewCellBackgroundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		892AA9B914183E4D0095DDCA /* Andrew_Zimmer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Andrew_Zimmer.png; sourceTree = "<group>"; };
 		892AA9BA14183E4D0095DDCA /* jess-in-a-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jess-in-a-box.png"; sourceTree = "<group>"; };
 		892AA9D3141843B40095DDCA /* twitterCellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterCellBG.png; sourceTree = "<group>"; };
+		898A046A14195319004C9910 /* XTableViewCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCellBackgroundView.h; sourceTree = "<group>"; };
+		898A046B14195319004C9910 /* XTableViewCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewCellBackgroundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +135,6 @@
 			children = (
 				891C19D91415537E00B0DF61 /* XCell */,
 				891C19D61415530200B0DF61 /* ViewControllers */,
-				892AA96E1417F0510095DDCA /* Views */,
 				891C19D4141552D800B0DF61 /* AppDelegate */,
 				891C19B51415527E00B0DF61 /* Supporting Files */,
 			);
@@ -242,6 +244,7 @@
 		891C1A2114155F9800B0DF61 /* XTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				898A046814195303004C9910 /* XTableViewCellBackgroundView */,
 				892AA99C14181AB00095DDCA /* XTableViewCellView */,
 				891C1A2514155FBC00B0DF61 /* XTableViewCellModel */,
 				891C1A2214155FB200B0DF61 /* XTableViewCell.h */,
@@ -259,13 +262,6 @@
 				891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */,
 			);
 			name = XTableViewCellModel;
-			sourceTree = "<group>";
-		};
-		892AA96E1417F0510095DDCA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		892AA9701417F05C0095DDCA /* TwitterXCell */ = {
@@ -333,6 +329,15 @@
 				892AA9AE141833270095DDCA /* TwitterViewController.m */,
 			);
 			name = TwitterViewController;
+			sourceTree = "<group>";
+		};
+		898A046814195303004C9910 /* XTableViewCellBackgroundView */ = {
+			isa = PBXGroup;
+			children = (
+				898A046A14195319004C9910 /* XTableViewCellBackgroundView.h */,
+				898A046B14195319004C9910 /* XTableViewCellBackgroundView.m */,
+			);
+			name = XTableViewCellBackgroundView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +425,7 @@
 				892AA9B0141833270095DDCA /* TwitterViewController.m in Sources */,
 				892AA9B51418352D0095DDCA /* TwitterXCell.m in Sources */,
 				892AA9B8141835AF0095DDCA /* TwitterXCellView.m in Sources */,
+				898A046C14195319004C9910 /* XTableViewCellBackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

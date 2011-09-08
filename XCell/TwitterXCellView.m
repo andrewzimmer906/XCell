@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  TwitterXCellView.m
 //  XCell
@@ -5,6 +6,7 @@
 //  Created by Andrew Zimmer on 9/7/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "TwitterXCellView.h"
 #import "TwitterXCellModel.h"
@@ -26,8 +28,8 @@
 }
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+#pragma mark - Drawing
+/* Performs all custom drawing needed to display the twitter-like cell. */
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     

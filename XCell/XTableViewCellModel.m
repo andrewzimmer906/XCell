@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  XTableViewCellModel.m
 //  XCell
@@ -5,6 +6,7 @@
 //  Created by Andrew Zimmer on 9/5/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "XTableViewCellModel.h"
 #import "XTableViewCellModelProtected.h"
@@ -12,7 +14,7 @@
 @implementation XTableViewCellModel
 
 @synthesize type, title, content, data, selectable, titleFont, contentFont, padding, minimumHeight,
-            titleColor, contentColor, titleAlignment, contentAlignment, backgroundColor, accessory, delegate, tag, textFieldBorderStyle, textFieldClearButtonMode, autocorrectionType, autocapitilizationType, keyboardType, returnKeyType, tabEnabled, textFieldData;
+            titleColor, contentColor, titleAlignment, contentAlignment, backgroundColor, accessory, delegate, tag, textFieldBorderStyle, textFieldClearButtonMode, autocorrectionType, autocapitilizationType, keyboardType, returnKeyType, tabEnabled, textFieldData, borderColor;
 
 #pragma mark - Memory Management
 -(void)dealloc {
@@ -121,6 +123,7 @@
     self.minimumHeight = DEFAULT_MINIMUM_HEIGHT;
     
     self.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+    self.borderColor = DEFAULT_BORDER_COLOR;
     
     //set extra stuff based on type
     if(self.type == XCELL_SETTINGS) {

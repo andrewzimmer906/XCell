@@ -1,10 +1,15 @@
+///////////////////////////////////////////////////////////////////
 //
 //  XTableViewControllerDelegate.h
 //  XCell
 //
+//  Defines delegate methods for a ViewController to implement
+//  when using an XTableViewController to handle a UITableView.
+//
 //  Created by Andrew Zimmer on 9/5/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
 @class XTableViewCellModel;

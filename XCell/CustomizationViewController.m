@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  CustomizationViewController.m
 //  XCell
@@ -5,6 +6,7 @@
 //  Created by Andrew Zimmer on 9/7/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
 
 #import "CustomizationViewController.h"
 #import "XTableViewCellModel.h"
@@ -56,6 +58,7 @@
 
 @implementation CustomizationViewController(Private)
 
+/* Get the data to populate the tableView */
 -(NSArray*)tableData {
     XTableViewCellModel *cell1 = [XTableViewCellModel modelWithType:XCELL_STANDARD_WITH_WRAPPING withTitle:@"Is that a new font? Looks AMAZING!"];
     cell1.titleFont = [UIFont fontWithName:@"Arial" size:20];

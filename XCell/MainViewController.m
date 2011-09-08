@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////
 //
 //  MainViewController.m
 //  XCell
@@ -5,6 +6,8 @@
 //  Created by Andrew Zimmer on 9/5/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+///////////////////////////////////////////////////////////////////
+
 
 #import "MainViewController.h"
 #import "XTableViewController.h"
@@ -15,7 +18,8 @@
 #import "CustomizationViewController.h"
 #import "TwitterViewController.h"
 
-//Cell Types
+//  Cell Types (used to tag the cells so I can identify which one was clicked on and
+//  load the appropriate screen).
 typedef enum {
     CELL_TYPES,
     GROUPED,
@@ -39,7 +43,6 @@ typedef enum {
 }
 
 #pragma mark - View lifecycle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -54,6 +57,11 @@ typedef enum {
 }
 
 #pragma mark - XTableViewControllerDelegate Methods
+
+/* 
+    Called when a cell is clicked. I use this delegate method in conjunction with the XTableViewCellModel's tag property to
+    load the correct screen.
+*/
 -(void)cellClicked:(NSIndexPath *)path {
     XTableViewCellModel *model = [_tableController modelForIndexPath:path];
     switch (model.tag) {
@@ -96,26 +104,10 @@ typedef enum {
     }
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField forCellModel:(XTableViewCellModel *)model {
-    [_tableController beginEditingWithModel:model];
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField forCellModel:(XTableViewCellModel *)model {
-    //[_tableController endEditingWithModel:model];
-}
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField forCellModel:(XTableViewCellModel *)model {
-    if(![_tableController beginEditingNextCell:model]) {
-        [textField resignFirstResponder];
-        [_tableController endEditingWithModel:model];
-    }
-    
-    return YES;
-}
-
 @end
 
 @implementation MainViewController(Private)
+/* Get's data for the table */
 -(NSArray*)tableData {
     return [NSArray arrayWithObjects:
             [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"Predefined Cells" withContent:@"" withAccesoryType:UITableViewCellAccessoryDisclosureIndicator withTag:CELL_TYPES],

@@ -1,10 +1,15 @@
+///////////////////////////////////////////////////////////////////
 //
 //  MainViewController.h
 //  XCell
 //
+//  Launchingn point for the application. Yes, it uses XCell
+//
 //  Created by Andrew Zimmer on 9/5/11.
 //  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
+/////////////////////////////////////////////////////////////////////
+
 
 #import "XTableViewControllerDelegate.h"
 
