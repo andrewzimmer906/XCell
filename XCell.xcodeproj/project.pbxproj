@@ -18,6 +18,22 @@
 		891C19DD141553A800B0DF61 /* XTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C19DC141553A800B0DF61 /* XTableViewController.m */; };
 		891C1A2414155FB200B0DF61 /* XTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C1A2314155FB200B0DF61 /* XTableViewCell.m */; };
 		891C1A2814155FD000B0DF61 /* XTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */; };
+		892AA9741417F0790095DDCA /* TwitterXCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA9731417F0790095DDCA /* TwitterXCellModel.m */; };
+		892AA97F141810BD0095DDCA /* CellTypesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA97D141810BD0095DDCA /* CellTypesViewController.m */; };
+		892AA980141810BD0095DDCA /* CellTypesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892AA97E141810BD0095DDCA /* CellTypesViewController.xib */; };
+		892AA982141816D90095DDCA /* CellTypesViewControllerGrouped.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892AA981141816D90095DDCA /* CellTypesViewControllerGrouped.xib */; };
+		892AA99F14181ACF0095DDCA /* XTableViewCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA99E14181ACF0095DDCA /* XTableViewCellView.m */; };
+		892AA9A414182B130095DDCA /* EditableContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA9A214182B130095DDCA /* EditableContentViewController.m */; };
+		892AA9A514182B130095DDCA /* EditableContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9A314182B130095DDCA /* EditableContentViewController.xib */; };
+		892AA9AA14182E470095DDCA /* CustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA9A814182E470095DDCA /* CustomizationViewController.m */; };
+		892AA9AB14182E470095DDCA /* CustomizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9A914182E470095DDCA /* CustomizationViewController.xib */; };
+		892AA9B0141833270095DDCA /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA9AE141833270095DDCA /* TwitterViewController.m */; };
+		892AA9B1141833270095DDCA /* TwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9AF141833270095DDCA /* TwitterViewController.xib */; };
+		892AA9B51418352D0095DDCA /* TwitterXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA9B41418352D0095DDCA /* TwitterXCell.m */; };
+		892AA9B8141835AF0095DDCA /* TwitterXCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 892AA9B7141835AF0095DDCA /* TwitterXCellView.m */; };
+		892AA9BB14183E4D0095DDCA /* Andrew_Zimmer.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9B914183E4D0095DDCA /* Andrew_Zimmer.png */; };
+		892AA9BC14183E4D0095DDCA /* jess-in-a-box.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9BA14183E4D0095DDCA /* jess-in-a-box.png */; };
+		892AA9D4141843B40095DDCA /* twitterCellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 892AA9D3141843B40095DDCA /* twitterCellBG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +57,32 @@
 		891C1A2314155FB200B0DF61 /* XTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewCell.m; sourceTree = "<group>"; };
 		891C1A2614155FD000B0DF61 /* XTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCellModel.h; sourceTree = "<group>"; };
 		891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewCellModel.m; sourceTree = "<group>"; };
+		892AA9721417F0790095DDCA /* TwitterXCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterXCellModel.h; sourceTree = "<group>"; };
+		892AA9731417F0790095DDCA /* TwitterXCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterXCellModel.m; sourceTree = "<group>"; };
+		892AA97914180A2D0095DDCA /* XTableViewCellTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCellTypes.h; sourceTree = "<group>"; };
+		892AA97A14180CE10095DDCA /* XTableViewCellModelProtected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCellModelProtected.h; sourceTree = "<group>"; };
+		892AA97C141810BD0095DDCA /* CellTypesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellTypesViewController.h; sourceTree = "<group>"; };
+		892AA97D141810BD0095DDCA /* CellTypesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellTypesViewController.m; sourceTree = "<group>"; };
+		892AA97E141810BD0095DDCA /* CellTypesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellTypesViewController.xib; path = XCell/CellTypesViewController.xib; sourceTree = "<group>"; };
+		892AA981141816D90095DDCA /* CellTypesViewControllerGrouped.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellTypesViewControllerGrouped.xib; sourceTree = "<group>"; };
+		892AA99D14181ACF0095DDCA /* XTableViewCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTableViewCellView.h; sourceTree = "<group>"; };
+		892AA99E14181ACF0095DDCA /* XTableViewCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTableViewCellView.m; sourceTree = "<group>"; };
+		892AA9A114182B130095DDCA /* EditableContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableContentViewController.h; sourceTree = "<group>"; };
+		892AA9A214182B130095DDCA /* EditableContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableContentViewController.m; sourceTree = "<group>"; };
+		892AA9A314182B130095DDCA /* EditableContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditableContentViewController.xib; path = XCell/EditableContentViewController.xib; sourceTree = "<group>"; };
+		892AA9A714182E470095DDCA /* CustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizationViewController.h; sourceTree = "<group>"; };
+		892AA9A814182E470095DDCA /* CustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizationViewController.m; sourceTree = "<group>"; };
+		892AA9A914182E470095DDCA /* CustomizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomizationViewController.xib; path = XCell/CustomizationViewController.xib; sourceTree = "<group>"; };
+		892AA9AD141833270095DDCA /* TwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterViewController.h; sourceTree = "<group>"; };
+		892AA9AE141833270095DDCA /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
+		892AA9AF141833270095DDCA /* TwitterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwitterViewController.xib; path = XCell/TwitterViewController.xib; sourceTree = "<group>"; };
+		892AA9B31418352D0095DDCA /* TwitterXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterXCell.h; sourceTree = "<group>"; };
+		892AA9B41418352D0095DDCA /* TwitterXCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterXCell.m; sourceTree = "<group>"; };
+		892AA9B6141835AF0095DDCA /* TwitterXCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterXCellView.h; sourceTree = "<group>"; };
+		892AA9B7141835AF0095DDCA /* TwitterXCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterXCellView.m; sourceTree = "<group>"; };
+		892AA9B914183E4D0095DDCA /* Andrew_Zimmer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Andrew_Zimmer.png; sourceTree = "<group>"; };
+		892AA9BA14183E4D0095DDCA /* jess-in-a-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jess-in-a-box.png"; sourceTree = "<group>"; };
+		892AA9D3141843B40095DDCA /* twitterCellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterCellBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +132,7 @@
 			children = (
 				891C19D91415537E00B0DF61 /* XCell */,
 				891C19D61415530200B0DF61 /* ViewControllers */,
+				892AA96E1417F0510095DDCA /* Views */,
 				891C19D4141552D800B0DF61 /* AppDelegate */,
 				891C19B51415527E00B0DF61 /* Supporting Files */,
 			);
@@ -118,6 +161,9 @@
 		891C19D2141552C500B0DF61 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				892AA9D3141843B40095DDCA /* twitterCellBG.png */,
+				892AA9B914183E4D0095DDCA /* Andrew_Zimmer.png */,
+				892AA9BA14183E4D0095DDCA /* jess-in-a-box.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -125,6 +171,11 @@
 		891C19D3141552CC00B0DF61 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				892AA9AF141833270095DDCA /* TwitterViewController.xib */,
+				892AA9A914182E470095DDCA /* CustomizationViewController.xib */,
+				892AA9A314182B130095DDCA /* EditableContentViewController.xib */,
+				892AA981141816D90095DDCA /* CellTypesViewControllerGrouped.xib */,
+				892AA97E141810BD0095DDCA /* CellTypesViewController.xib */,
 				891C19C61415527E00B0DF61 /* MainViewController.xib */,
 			);
 			name = Nibs;
@@ -151,6 +202,10 @@
 		891C19D61415530200B0DF61 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				892AA9AC141833120095DDCA /* TwitterViewController */,
+				892AA9A614182E320095DDCA /* CustomizationViewController */,
+				892AA9A014182AFB0095DDCA /* EditableContentViewController */,
+				892AA97B1418109A0095DDCA /* CellTypesViewController */,
 				891C19D71415530900B0DF61 /* MainViewController */,
 			);
 			name = ViewControllers;
@@ -187,6 +242,7 @@
 		891C1A2114155F9800B0DF61 /* XTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				892AA99C14181AB00095DDCA /* XTableViewCellView */,
 				891C1A2514155FBC00B0DF61 /* XTableViewCellModel */,
 				891C1A2214155FB200B0DF61 /* XTableViewCell.h */,
 				891C1A2314155FB200B0DF61 /* XTableViewCell.m */,
@@ -197,10 +253,86 @@
 		891C1A2514155FBC00B0DF61 /* XTableViewCellModel */ = {
 			isa = PBXGroup;
 			children = (
+				892AA97914180A2D0095DDCA /* XTableViewCellTypes.h */,
+				892AA97A14180CE10095DDCA /* XTableViewCellModelProtected.h */,
 				891C1A2614155FD000B0DF61 /* XTableViewCellModel.h */,
 				891C1A2714155FD000B0DF61 /* XTableViewCellModel.m */,
 			);
 			name = XTableViewCellModel;
+			sourceTree = "<group>";
+		};
+		892AA96E1417F0510095DDCA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		892AA9701417F05C0095DDCA /* TwitterXCell */ = {
+			isa = PBXGroup;
+			children = (
+				892AA9711417F0640095DDCA /* TwitterXCellModel */,
+				892AA9B31418352D0095DDCA /* TwitterXCell.h */,
+				892AA9B41418352D0095DDCA /* TwitterXCell.m */,
+				892AA9B6141835AF0095DDCA /* TwitterXCellView.h */,
+				892AA9B7141835AF0095DDCA /* TwitterXCellView.m */,
+			);
+			name = TwitterXCell;
+			sourceTree = "<group>";
+		};
+		892AA9711417F0640095DDCA /* TwitterXCellModel */ = {
+			isa = PBXGroup;
+			children = (
+				892AA9721417F0790095DDCA /* TwitterXCellModel.h */,
+				892AA9731417F0790095DDCA /* TwitterXCellModel.m */,
+			);
+			name = TwitterXCellModel;
+			sourceTree = "<group>";
+		};
+		892AA97B1418109A0095DDCA /* CellTypesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				892AA97C141810BD0095DDCA /* CellTypesViewController.h */,
+				892AA97D141810BD0095DDCA /* CellTypesViewController.m */,
+			);
+			name = CellTypesViewController;
+			sourceTree = "<group>";
+		};
+		892AA99C14181AB00095DDCA /* XTableViewCellView */ = {
+			isa = PBXGroup;
+			children = (
+				892AA99D14181ACF0095DDCA /* XTableViewCellView.h */,
+				892AA99E14181ACF0095DDCA /* XTableViewCellView.m */,
+			);
+			name = XTableViewCellView;
+			sourceTree = "<group>";
+		};
+		892AA9A014182AFB0095DDCA /* EditableContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				892AA9A114182B130095DDCA /* EditableContentViewController.h */,
+				892AA9A214182B130095DDCA /* EditableContentViewController.m */,
+			);
+			name = EditableContentViewController;
+			sourceTree = "<group>";
+		};
+		892AA9A614182E320095DDCA /* CustomizationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				892AA9A714182E470095DDCA /* CustomizationViewController.h */,
+				892AA9A814182E470095DDCA /* CustomizationViewController.m */,
+			);
+			name = CustomizationViewController;
+			sourceTree = "<group>";
+		};
+		892AA9AC141833120095DDCA /* TwitterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				892AA9701417F05C0095DDCA /* TwitterXCell */,
+				892AA9AD141833270095DDCA /* TwitterViewController.h */,
+				892AA9AE141833270095DDCA /* TwitterViewController.m */,
+			);
+			name = TwitterViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +388,14 @@
 			files = (
 				891C19B91415527E00B0DF61 /* InfoPlist.strings in Resources */,
 				891C19C81415527E00B0DF61 /* MainViewController.xib in Resources */,
+				892AA980141810BD0095DDCA /* CellTypesViewController.xib in Resources */,
+				892AA982141816D90095DDCA /* CellTypesViewControllerGrouped.xib in Resources */,
+				892AA9A514182B130095DDCA /* EditableContentViewController.xib in Resources */,
+				892AA9AB14182E470095DDCA /* CustomizationViewController.xib in Resources */,
+				892AA9B1141833270095DDCA /* TwitterViewController.xib in Resources */,
+				892AA9BB14183E4D0095DDCA /* Andrew_Zimmer.png in Resources */,
+				892AA9BC14183E4D0095DDCA /* jess-in-a-box.png in Resources */,
+				892AA9D4141843B40095DDCA /* twitterCellBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +412,14 @@
 				891C19DD141553A800B0DF61 /* XTableViewController.m in Sources */,
 				891C1A2414155FB200B0DF61 /* XTableViewCell.m in Sources */,
 				891C1A2814155FD000B0DF61 /* XTableViewCellModel.m in Sources */,
+				892AA9741417F0790095DDCA /* TwitterXCellModel.m in Sources */,
+				892AA97F141810BD0095DDCA /* CellTypesViewController.m in Sources */,
+				892AA99F14181ACF0095DDCA /* XTableViewCellView.m in Sources */,
+				892AA9A414182B130095DDCA /* EditableContentViewController.m in Sources */,
+				892AA9AA14182E470095DDCA /* CustomizationViewController.m in Sources */,
+				892AA9B0141833270095DDCA /* TwitterViewController.m in Sources */,
+				892AA9B51418352D0095DDCA /* TwitterXCell.m in Sources */,
+				892AA9B8141835AF0095DDCA /* TwitterXCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

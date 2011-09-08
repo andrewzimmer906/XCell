@@ -7,30 +7,12 @@
 //
 
 #import "XTableViewCellModel.h"
-
-//Change these defaults to affect every cell in your project.
-#define DEFAULT_HORIZONTAL_PADDING 20
-#define DEFAULT_VERTICAL_PADDING 10
-#define DEFAULT_MINIMUM_HEIGHT 44
-
-#define DEFAULT_TITLE_FONT [UIFont boldSystemFontOfSize:17]
-#define DEFAULT_TITLE_ALIGNMENT UITextAlignmentLeft
-#define DEFAULT_TITLE_COLOR [UIColor colorWithRed:.07f green:.07f blue:.07f alpha:1]
-
-#define DEFAULT_CONTENT_FONT [UIFont systemFontOfSize:14]
-#define DEFAULT_CONTENT_ALIGNMENT UITextAlignmentLeft
-#define DEFAULT_CONTENT_COLOR [UIColor colorWithRed:.66f green:.66f blue:.66f alpha:1]
-
-#define DEFAULT_BACKGROUND_COLOR [UIColor whiteColor]
-//
-
-@interface XTableViewCellModel(Private)
--(void)setDefaults;
-@end
+#import "XTableViewCellModelProtected.h"
 
 @implementation XTableViewCellModel
+
 @synthesize type, title, content, data, selectable, titleFont, contentFont, padding, minimumHeight,
-            titleColor, contentColor, titleAlignment, contentAlignment, backgroundColor, showDisclosureIndicator, delegate, tag, textFieldBorderStyle, textFieldClearButtonMode, autocorrectionType, autocapitilizationType, keyboardType, returnKeyType, tabEnabled;
+            titleColor, contentColor, titleAlignment, contentAlignment, backgroundColor, accessory, delegate, tag, textFieldBorderStyle, textFieldClearButtonMode, autocorrectionType, autocapitilizationType, keyboardType, returnKeyType, tabEnabled, textFieldData;
 
 #pragma mark - Memory Management
 -(void)dealloc {
@@ -72,27 +54,53 @@
     return model;
 }
 
-+(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content withDelegate:(id<XTableViewControllerDelegate>)delegate {
++(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content withAccesoryType:(UITableViewCellAccessoryType)accessory {
     XTableViewCellModel *model = [[[XTableViewCellModel alloc] initWithType:type] autorelease];
     if(model) {
         model.title = title;
         model.content = content;
+        model.accessory = accessory;
+    }
+    return model;
+}
+
++(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content 
+  withAccesoryType:(UITableViewCellAccessoryType)accessory withTag:(NSInteger)tag {
+    XTableViewCellModel *model = [[[XTableViewCellModel alloc] initWithType:type] autorelease];
+    if(model) {
+        model.title = title;
+        model.content = content;
+        model.accessory = accessory;
+        model.tag = tag;
+    }
+    return model;
+}
+
++(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content withAccesoryType:(UITableViewCellAccessoryType)accessory withTag:(NSInteger)tag withEditingDelegate:(id<XTableViewControllerDelegate>)delegate {
+    XTableViewCellModel *model = [[[XTableViewCellModel alloc] initWithType:type] autorelease];
+    if(model) {
+        model.title = title;
+        model.content = content;
+        model.accessory = accessory;
+        model.tag = tag;
         model.delegate = delegate;
     }
     return model;
 }
+
 @end
 
-#pragma mark - Private -
-@implementation XTableViewCellModel(Private)
+#pragma mark - Protected -
+@implementation XTableViewCellModel(Protected)
 
 /* Sets the defaults for the model. Used in initilization */
 -(void)setDefaults {
     self.selectable = YES;
-    self.showDisclosureIndicator = NO;
+    self.accessory = UITableViewCellAccessoryNone;
     self.tag = -1;
     self.delegate = nil;
     self.tabEnabled = NO;
+    self.textFieldData = nil;
     
     self.textFieldBorderStyle = UITextBorderStyleRoundedRect;
     self.textFieldClearButtonMode = UITextFieldViewModeNever;

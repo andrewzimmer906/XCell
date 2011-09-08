@@ -10,6 +10,20 @@
 #import "XTableViewController.h"
 #import "XTableViewCellModel.h"
 
+#import "CellTypesViewController.h"
+#import "EditableContentViewController.h"
+#import "CustomizationViewController.h"
+#import "TwitterViewController.h"
+
+//Cell Types
+typedef enum {
+    CELL_TYPES,
+    GROUPED,
+    EDITABLE,
+    CUSTOMIZED,
+    CUSTOM
+} MAIN_VIEW_CELLS;
+
 @interface MainViewController(Private)
 -(NSArray*)tableData;
 @end
@@ -40,6 +54,48 @@
 }
 
 #pragma mark - XTableViewControllerDelegate Methods
+-(void)cellClicked:(NSIndexPath *)path {
+    XTableViewCellModel *model = [_tableController modelForIndexPath:path];
+    switch (model.tag) {
+        case CELL_TYPES:
+        {
+            UIViewController *detailView = [[CellTypesViewController alloc] initWithNibName:@"CellTypesViewController" bundle:nil];
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+            break;
+        
+        case GROUPED:
+        {
+            UIViewController *detailView = [[CellTypesViewController alloc] initWithNibName:@"CellTypesViewControllerGrouped" bundle:nil];
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+            break;
+            
+        case EDITABLE:
+        {
+            UIViewController *detailView = [[EditableContentViewController alloc] initWithNibName:@"EditableContentViewController" bundle:nil];
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+            break;
+        case CUSTOMIZED: 
+        {
+            UIViewController *detailView = [[CustomizationViewController alloc] initWithNibName:@"CustomizationViewController" bundle:nil];
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+            break;
+        
+        case CUSTOM:
+        {
+            UIViewController *detailView = [[TwitterViewController alloc] initWithNibName:@"TwitterViewController" bundle:nil];
+            [self.navigationController pushViewController:detailView animated:YES];
+        }
+            break;
+        default:
+            NSLog(@"Screen not implemented");
+            break;
+    }
+}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField forCellModel:(XTableViewCellModel *)model {
     [_tableController beginEditingWithModel:model];
 }
@@ -62,18 +118,11 @@
 @implementation MainViewController(Private)
 -(NSArray*)tableData {
     return [NSArray arrayWithObjects:
-            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"XCELL_STANDARD"],
-            [XTableViewCellModel modelWithType:XCELL_STANDARD_WITH_WRAPPING 
-                                     withTitle:@"XCELL_STANDARD_WITH_WRAPPING, another normal cell, but this time with wrapping capabilities."],
-            [XTableViewCellModel modelWithType:XCELL_SETTINGS withTitle:@"XCELL_SETTINGS" withContent:@"Apple's value1"],
-            [XTableViewCellModel modelWithType:XCELL_CONTACTS withTitle:@"XCELL_CONTACTS" withContent:@"Apple's value2"],
-            [XTableViewCellModel modelWithType:XCELL_SUBTITLE withTitle:@"XCELL_SUBTITLE" withContent:@"Apple's SUBTITLE except that my version supports wrapping inside the cell view."],
-            [XTableViewCellModel modelWithType:XCELL_TITLE_CONTENT withTitle:@"XCELL_TITLE_CONTENT:" withContent:@"Supports one line of content."],
-            [XTableViewCellModel modelWithType:XCELL_TITLE_CONTENT_WITH_WRAPPING withTitle:@"Short Title:" withContent:@"XCELL_TITLE_CONTENT_WITH_WRAPPING. Supports multiple lines of content with an autogrow/stretch to size the cell correctly to wrapping content."],
-            [XTableViewCellModel modelWithType:XCELL_EDITABLE_TEXT withTitle:@"XCELL_TITLE_CONTENT:" withContent:@"Supports one line of content." withDelegate:self],
-            [XTableViewCellModel modelWithType:XCELL_EDITABLE_TEXT withTitle:@"XCELL_TITLE_CONTENT:" withContent:@"Supports one line of content." withDelegate:self],
-            [XTableViewCellModel modelWithType:XCELL_EDITABLE_TEXT withTitle:@"XCELL_TITLE_CONTENT:" withContent:@"Supports one line of content." withDelegate:self],
-            [XTableViewCellModel modelWithType:XCELL_EDITABLE_TEXT_WITH_TITLE withTitle:@"XCELL_TITLE_CONTENT:" withContent:@"Supports one line of content." withDelegate:self],
+            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"Predefined Cells" withContent:@"" withAccesoryType:UITableViewCellAccessoryDisclosureIndicator withTag:CELL_TYPES],
+            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"TableView Grouped" withContent:@"" withAccesoryType:UITableViewCellAccessoryDisclosureIndicator withTag:GROUPED],
+            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"Cells with Editable Content" withContent:@"" withAccesoryType:UITableViewCellAccessoryDisclosureIndicator withTag:EDITABLE],
+            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"Customized Cells" withContent:@"" withAccesoryType:UITableViewCellAccessoryDisclosureIndicator withTag:CUSTOMIZED],
+            [XTableViewCellModel modelWithType:XCELL_STANDARD withTitle:@"Custom Cells + Performance" withContent:@"" withAccesoryType:UITableViewCellAccessoryDisclosureIndicator withTag:CUSTOM],
             nil];
 }
 @end

@@ -22,54 +22,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "XCell/XTableViewCell.m"
-         timestampString = "337040788.143666"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "276"
-         endingLineNumber = "276"
-         landmarkName = "-drawTitle:withWrapping:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "XCell/XTableViewCell.m"
-         timestampString = "337040788.143666"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "270"
-         endingLineNumber = "270"
-         landmarkName = "-drawTitle:withWrapping:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "XCell/XTableViewCell.m"
-         timestampString = "337040788.143666"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "291"
-         endingLineNumber = "291"
-         landmarkName = "-drawTitle:withContent:withWrapping:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "XCell/MainViewController.m"
-         timestampString = "337040788.143666"
+         timestampString = "337130422.563717"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
          landmarkName = "-textFieldShouldReturn:forCellModel:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "XCell/XTableViewCellModel.m"
-         timestampString = "337040881.495313"
+         timestampString = "337121357.059346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "142"
+         endingLineNumber = "142"
          landmarkName = "-setDefaults"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "XCell/XTableViewCellModel.m"
-         timestampString = "337037403.6779"
+         timestampString = "337120631.853698"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
          landmarkName = "-initWithType:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -107,12 +65,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "XCell/XTableViewCellModel.m"
-         timestampString = "337037447.995851"
+         timestampString = "337121357.059346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
-         landmarkName = "+modelWithType:withTitle:withContent:withDelegate:"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "+modelWithType:withTitle:withContent:withAccesoryType:withTag:withEditingDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -121,12 +79,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "XCell/XTableViewCellModel.m"
-         timestampString = "337037447.995851"
+         timestampString = "337121357.059346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
-         landmarkName = "+modelWithType:withTitle:withContent:withDelegate:"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "+modelWithType:withTitle:withContent:withAccesoryType:withTag:withEditingDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -135,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "XCell/XTableViewCell.m"
-         timestampString = "337037549.46473"
+         timestampString = "337126618.768365"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
          landmarkName = "-beginEditing"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "XCell/XTableViewCell.m"
-         timestampString = "337037550.384709"
+         timestampString = "337126618.768365"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-endEditing"
          landmarkType = "5">
       </FileBreakpoint>
@@ -162,13 +120,55 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "XCell/XTableViewCell.m"
-         timestampString = "337040918.064593"
+         filePath = "XCell/XTableViewController.m"
+         timestampString = "337134154.233535"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "164"
-         endingLineNumber = "164"
-         landmarkName = "-drawRect:"
+         startingLineNumber = "328"
+         endingLineNumber = "328"
+         landmarkName = "-didRotate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "XCell/TwitterXCellView.m"
+         timestampString = "337131641.213414"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "12"
+         endingLineNumber = "12"
+         landmarkName = "@implementation TwitterXCellView"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "XCell/TwitterXCell.m"
+         timestampString = "337132368.595489"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
+         landmarkName = "+cellHeight:withTableWidth:withTableStyle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "XCell/TwitterXCellModel.m"
+         timestampString = "337135858.575082"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
+         landmarkName = "-dateAsString"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

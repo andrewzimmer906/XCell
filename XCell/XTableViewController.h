@@ -21,10 +21,12 @@
     
     XTableViewCellModel *_curEditingModel;
     BOOL _keyboardIsShowing;
-    CGFloat _keyboardHeight;
+    NSInteger _keyboardHeight;
+    NSInteger _previousKeyboardHeight;
 }
 
 @property(nonatomic, assign) id<XTableViewControllerDelegate> delegate;
+@property(nonatomic, retain) Class cellClass;
 @property BOOL sortSectionsAlphabetically;
 
 //Initialization

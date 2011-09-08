@@ -8,30 +8,32 @@
 
 #import <Foundation/Foundation.h>
 #import "XTableViewControllerDelegate.h"
-typedef enum {
-    XCELL_STANDARD,  // Standard Cell Style DEFAULT
-    XCELL_SETTINGS,  // Standard Cell Value1
-    XCELL_CONTACTS,  // Standard Cell Value2
-    XCELL_SUBTITLE,  // Standard Cell Subtitle
-    XCELL_STANDARD_WITH_WRAPPING,
-    XCELL_TITLE_CONTENT,
-    XCELL_TITLE_CONTENT_WITH_WRAPPING,
-    XCELL_EDITABLE_TEXT,
-    XCELL_EDITABLE_TEXT_WITH_TITLE
-}XTableViewCellStyle;
+#import "XTableViewCellTypes.h"
 
 @interface XTableViewCellModel : NSObject {
 
 }
 
-//Init
+//init
 -(id)initWithType:(XTableViewCellStyle)eType;
 
 // Convenience Initialization Methods
 +(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title;
+
 +(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content;
+
 +(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content 
-      withDelegate:(id<XTableViewControllerDelegate>)delegate;
+  withAccesoryType:(UITableViewCellAccessoryType)accessory;
+
+
++(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content 
+                                             withAccesoryType:(UITableViewCellAccessoryType)accessory
+                                             withTag:(NSInteger)tag;
+
++(id)modelWithType:(XTableViewCellStyle)type withTitle:(NSString*)title withContent:(NSString*)content 
+                                             withAccesoryType:(UITableViewCellAccessoryType)accessory 
+                                             withTag:(NSInteger)tag 
+                                             withEditingDelegate:(id<XTableViewControllerDelegate>)delegate;
 
 #pragma mark Properties
 @property XTableViewCellStyle type;
@@ -39,7 +41,8 @@ typedef enum {
 // Data
 @property(nonatomic, retain) NSString *title;
 @property(nonatomic, retain) NSString *content;
-@property(nonatomic, retain) id data;
+@property(nonatomic, retain) NSString *textFieldData;
+@property(nonatomic, retain) id data;  //used for whatever you want for your own custom cells.
 
 //Events
 @property(nonatomic, assign) id<XTableViewControllerDelegate> delegate; //used for editing textFields
@@ -66,7 +69,7 @@ typedef enum {
 @property NSInteger minimumHeight;
 
 @property BOOL selectable;
-@property BOOL showDisclosureIndicator;
+@property(nonatomic) UITableViewCellAccessoryType accessory;
 
 @property(nonatomic, retain) UIColor *backgroundColor;
 

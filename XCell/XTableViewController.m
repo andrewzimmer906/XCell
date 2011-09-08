@@ -14,16 +14,19 @@
 
 @interface XTableViewController(Private)
 -(void)logError:(NSString*)error;
+-(NSString*)nameForSection:(NSInteger)section;
 -(NSArray*)arrayForSection:(NSInteger)section;
 -(void)destroyData;
 -(void)keyboardWillShow:(NSNotification *)notification;
 -(void)hideKeyboard;
+-(void)didRotate:(NSNotification *)notification;
 -(NSInteger)tagForIndexPath:(NSIndexPath*)path;
 @end
 
 @implementation XTableViewController
 @synthesize delegate;
 @synthesize sortSectionsAlphabetically = _sortSectionsAlphabetically;
+@synthesize cellClass;
 
 #pragma mark - Memory Management
 
@@ -36,12 +39,17 @@
         tableView.dataSource = self;
         _sortSectionsAlphabetically = NO;
         _curEditingModel = nil;
+        cellClass = [XTableViewCell class];
         
         // Register notification when the keyboard will be shown (to get its size)
         [[NSNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(keyboardWillShow:)
                                               name:UIKeyboardWillShowNotification
                                               object:nil];
+        // Register notification when the device turns (to adjust the keyboard stuff.
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(didRotate:)
+                                              name:@"UIDeviceOrientationDidChangeNotification" object:nil];
     }
     return self;
 }
@@ -171,11 +179,25 @@
     return [sectionArray count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(_data == nil) {
+        [self logError:STANDARD_ERROR_MESSAGE];
+        return nil;
+    }
+    
+    NSString *title = [self nameForSection:section];
+    if(![title isEqualToString:@""]) {
+        return title;
+    } else {
+        return nil;
+    }    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     XTableViewCellModel *model = [self modelForIndexPath:indexPath];
-    XTableViewCell *cell = (XTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[XTableViewCell cellIdentifier]];
+    XTableViewCell *cell = (XTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[cellClass cellIdentifier]];
     if (cell == nil) {
-        cell = [[[XTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[XTableViewCell cellIdentifier]] autorelease];
+        cell = [[[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[cellClass cellIdentifier]] autorelease];
     }
     
     cell.model = model;
@@ -186,7 +208,7 @@
 #pragma mark - TableView Delegate
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     XTableViewCellModel *model = [self modelForIndexPath:indexPath];
-    return [XTableViewCell cellHeight:model withTableWidth:tableView.frame.size.width];
+    return [cellClass cellHeight:model withTableWidth:tableView.frame.size.width withTableStyle:tableView.style];
 }
 
 /* Throw any clicks up to the delegate (most likely the view controller) */
@@ -250,19 +272,20 @@
 
 /* Size the tableview accordingly */
 -(void)keyboardWillShow:(NSNotification *)notification {
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
+    CGRect keyboardRect;
+    [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardRect];
+    _previousKeyboardHeight = _keyboardHeight;
+    
+    if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+        _keyboardHeight = keyboardRect.size.height;
+    }
+    else {
+        _keyboardHeight = keyboardRect.size.width;
+    }
+    
     if(_curEditingModel != nil && !_keyboardIsShowing) {
-        UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-        
-        CGRect _keyboardEndFrame;
-        [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&_keyboardEndFrame];
-        
-        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-            _keyboardHeight = _keyboardEndFrame.size.height;
-        }
-        else {
-            _keyboardHeight = _keyboardEndFrame.size.width;
-        }
-        
         //calculate a new frame
         CGRect frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height - _keyboardHeight);
         
@@ -282,7 +305,7 @@
 }
 
 -(void)hideKeyboard {
-    if(_keyboardIsShowing) {        
+    if(_keyboardIsShowing) {
         //calculate a new frame
         CGRect frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height + _keyboardHeight);
         
@@ -296,6 +319,25 @@
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         
         _keyboardIsShowing = NO;
+    }
+}
+
+-(void)didRotate:(NSNotification *)notification {	
+    if(_keyboardIsShowing) {
+        //calculate a new frame
+        CGRect frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y, _tableView.frame.size.width, 
+                                  _tableView.frame.size.height + (_previousKeyboardHeight - _keyboardHeight));
+        
+        [UIView animateWithDuration:.3
+                         animations:^{ 
+                             _tableView.frame = frame;
+                         } 
+                         completion:^(BOOL finished){
+                         }];
+        
+        NSIndexPath *path = [self indexPathForModel:_curEditingModel];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        [_tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
 
