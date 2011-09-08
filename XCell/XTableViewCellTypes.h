@@ -4,7 +4,7 @@
 //  XCell
 //
 //  Created by Andrew Zimmer on 9/7/11.
-//  Copyright (c) 2011 Modea. All rights reserved.
+//  Copyright (c) 2011 Andrew Zimmer. All rights reserved.
 //
 /////////////////////////////////////////////////////
 
